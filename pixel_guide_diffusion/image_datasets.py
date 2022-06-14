@@ -70,7 +70,7 @@ def load_data(
 
 def _list_image_files_recursively(data_dir):
     results = []
-    for entry in sorted(os.listdir(data_dir)):
+    for entry in sorted(glob.glob(data_dir+"*")):
         full_path = os.path.join(data_dir, entry)
         ext = entry.split(".")[-1]
         if "." in entry and ext.lower() in ["jpg", "jpeg", "png", "gif"]:
