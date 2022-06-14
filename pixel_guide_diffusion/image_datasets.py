@@ -5,6 +5,7 @@ import numpy as np
 from torch.utils.data import DataLoader, Dataset
 
 import PIL.ImageFile
+import os
 PIL.ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
@@ -69,8 +70,8 @@ def load_data(
 
 def _list_image_files_recursively(data_dir):
     results = []
-    for entry in sorted(bf.listdir(data_dir)):
-        full_path = bf.join(data_dir, entry)
+    for entry in sorted(os.listdir(data_dir)):
+        full_path = os.path.join(data_dir, entry)
         ext = entry.split(".")[-1]
         if "." in entry and ext.lower() in ["jpg", "jpeg", "png", "gif"]:
             results.append(full_path)
